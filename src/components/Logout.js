@@ -1,7 +1,25 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom"
+import { useAuth } from "../contexts/AuthContext"
 
-function Logout () {
-    return <h1>This is only the beginning!</h1>
+const Logout = () => {
+    const [error, setError] = useState("")
+    const { logout } = useAuth()
+    const navigate = useNavigate()
+
+    useEffect(async () => {
+        setError("")
+
+        try {
+            await logout()
+            navigate("/")
+        } catch {
+            setError("Failed to log out")
+        }
+    }, [])
+
+    return "Logging out..."
+
 }
 
 export default Logout;
