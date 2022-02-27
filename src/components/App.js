@@ -5,7 +5,9 @@ import Signup from './Signup';
 import Logout from './Logout';
 import NavBar from './NavBar';
 import Profile from './Profile';
-import React, { useState } from 'react';
+import ForgotPassword from './ForgotPassword';
+import UpdateProfile from './UpdateProfile';
+import React from 'react';
 import { useAuth } from "../contexts/AuthContext"
 
 function App () {
@@ -26,8 +28,15 @@ function App () {
         <Route exact path='/Logout' element={<Logout />
         }>
         </Route>
+        <Route exact path='/Forgot-password' element={<ForgotPassword />
+        }>
+        </Route>
         <Route exact path='/Profile' element={
           !currentUser ? <Navigate to="/Login" /> : <Profile />
+        }>
+        </Route>
+        <Route exact path='/Update-profile' element={
+          !currentUser ? <Navigate to="/Login" /> : <UpdateProfile />
         }>
         </Route>
         <Route exact path='/' element={<Home />
