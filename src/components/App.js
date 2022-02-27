@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Navigate, Routes } from 'react-router-dom';
 import Home from './Home';
 import Login from './Login';
+import Signup from './Signup';
 import Logout from './Logout';
 import NavBar from './NavBar';
 import Profile from './Profile';
@@ -17,6 +18,9 @@ function App () {
         <NavBar user={user} />
         <Routes>
           <Route exact path='/Login' element={<Login setUserAuth={setUserAuth} />
+          }>
+          </Route>
+          <Route exact path='/Signup' element={<Signup setUserAuth={setUserAuth} />
           }>
           </Route>
           <Route exact path='/Logout' element={<Logout />
