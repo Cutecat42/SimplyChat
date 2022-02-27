@@ -40,7 +40,6 @@ function Signup () {
                     <Card>
                         <Card.Body>
                             <h2 className="text-center mb-4">Sign Up</h2>
-                            {/* {JSON.stringify(currentUser)} */}
                             {error && <Alert variant="danger">{error}</Alert>}
                             <Form onSubmit={handleSubmit}>
                                 <Form.Group id="email">
@@ -55,7 +54,7 @@ function Signup () {
                                     <Form.Label>Password Confirmation</Form.Label>
                                     <Form.Control type="password" ref={passwordConfirmRef} required />
                                 </Form.Group>
-                                <Button disabled={loading} className="w-100" type="submit">
+                                <Button disabled={loading} className="w-100 mt-2" type="submit">
                                     Sign Up
                                 </Button>
                             </Form>

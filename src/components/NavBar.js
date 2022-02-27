@@ -4,8 +4,8 @@ import { NavLink } from 'react-router-dom';
 import Nav from 'react-bootstrap/Nav';
 import React from 'react';
 
-const NavBar = ({ user }) => {
-    if (!user) return (
+const NavBar = ({ currentUser }) => {
+    if (!currentUser) return (
         <Navbar bg='dark' variant='dark' className='py-1'>
             <NavLink to='/' className='navbar-brand'>Simply Chat</NavLink>
             <Navbar.Toggle aria-controls='basic-navbar-nav' />
