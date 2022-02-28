@@ -55,6 +55,26 @@ function AuthProvider ({ children }) {
         return currentUser.updatePassword(password)
     }
 
+    function updateName (name) {
+        return currentUser.updateProfile({
+            displayName: name,
+        }).then(function () {
+
+        }, function (error) {
+            // An error happened.
+        });
+    }
+
+    function updateUrl (url) {
+        return currentUser.updateProfile({
+            photoURL: url
+        }).then(function () {
+
+        }, function (error) {
+            // An error happened.
+        });
+    }
+
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(user => {
             setCurrentUser(user)
@@ -72,7 +92,9 @@ function AuthProvider ({ children }) {
         resetPassword,
         updateEmail,
         updatePassword,
-        reLogin
+        reLogin,
+        updateName,
+        updateUrl
     }
 
     return (

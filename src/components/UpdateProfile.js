@@ -8,7 +8,9 @@ export default function UpdateProfile () {
     const currentPasswordRef = useRef()
     const newPasswordRef = useRef()
     const passwordConfirmRef = useRef()
-    const { reLogin, login, currentUser, updatePassword, updateEmail } = useAuth()
+    const nameRef = useRef()
+    const urlRef = useRef()
+    const { reLogin, login, currentUser, updatePassword, updateEmail, updateName, updateUrl } = useAuth()
     const [error, setError] = useState("")
     const [loading, setLoading] = useState(false)
     const navigate = useNavigate()
@@ -41,6 +43,12 @@ export default function UpdateProfile () {
         if (emailRef.current.value !== currentUser.email) {
             promises.push(updateEmail(emailRef.current.value))
         }
+        if (nameRef.current.value !== currentUser.displayName) {
+            promises.push(updateName(nameRef.current.value))
+        }
+        if (urlRef.current.value) {
+            promises.push(updateUrl(urlRef.current.value))
+        }
         if (newPasswordRef.current.value) {
             promises.push(login(currentUser.email, currentPasswordRef.current.value))
             promises.push(updatePassword(newPasswordRef.current.value))
@@ -70,6 +78,24 @@ export default function UpdateProfile () {
                             <h2 className="text-center mb-4">Update Profile</h2>
                             {error && <Alert variant="danger">{error}</Alert>}
                             <Form onSubmit={handleSubmit}>
+                                <Form.Group id="name">
+                                    <Form.Label>Username</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        ref={nameRef}
+                                        required
+                                        defaultValue={currentUser.displayName}
+                                    />
+                                </Form.Group>
+                                <Form.Group id="url">
+                                    <Form.Label>New Photo URL</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        ref={urlRef}
+                                        autoComplete="off"
+                                        placeholder="http://"
+                                    />
+                                </Form.Group>
                                 <Form.Group id="email">
                                     <Form.Label>Email</Form.Label>
                                     <Form.Control
@@ -84,6 +110,7 @@ export default function UpdateProfile () {
                                     <Form.Control
                                         type="password"
                                         ref={currentPasswordRef}
+                                        required
                                     />
                                 </Form.Group>
                                 <Form.Group id="new-password">
@@ -109,7 +136,7 @@ export default function UpdateProfile () {
                         </Card.Body>
                     </Card>
                     <div className="w-100 text-center mt-2">
-                        <Link to="/">Cancel</Link>
+                        <Link to="/Profile">Cancel</Link>
                     </div>
                 </div>
             </Container>
