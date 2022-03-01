@@ -1,7 +1,6 @@
 import React, { useContext, useState, useEffect } from "react"
 import { auth } from "../firebase"
 import {
-    getAuth,
     reauthenticateWithCredential,
     EmailAuthProvider,
 } from "firebase/auth";

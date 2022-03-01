@@ -6,7 +6,7 @@ import React from 'react';
 
 const NavBar = ({ currentUser }) => {
     if (!currentUser) return (
-        <Navbar bg='dark' variant='dark' className='py-1'>
+        <Navbar bg='dark' variant='dark' className='py-1' style={{ position: "sticky", top: 0 }}>
             <NavLink to='/' className='navbar-brand'>Simply Chat</NavLink>
             <Navbar.Toggle aria-controls='basic-navbar-nav' />
 
@@ -19,7 +19,7 @@ const NavBar = ({ currentUser }) => {
     );
 
     return (
-        <Navbar bg='dark' variant='dark' className='py-1' expand="md">
+        <Navbar bg='dark' variant='dark' className='py-1' expand="md" style={{ position: "sticky", top: 0 }}>
             <NavLink to='/' className='navbar-brand ms-3'>Simply Chat</NavLink>
             <Navbar.Toggle aria-controls='basic-navbar-nav' />
             <Navbar.Collapse id='basic-navbar-nav' className='justify-content-end'>

@@ -17,7 +17,10 @@ function App () {
   return (
     <div className='App'>
 
-      <NavBar currentUser={currentUser} />
+      <NavBar currentUser={currentUser} style={{
+        position: "sticky",
+        top: 0
+      }} />
       <Routes>
         <Route exact path='/Login' element={<Login />
         }>
@@ -39,7 +42,8 @@ function App () {
           !currentUser ? <Navigate to="/Login" /> : <UpdateProfile />
         }>
         </Route>
-        <Route exact path='/' element={<Home />
+        <Route exact path='/' element={
+          !currentUser ? <Navigate to="/Login" /> : <Home />
         }>
         </Route>
       </Routes>

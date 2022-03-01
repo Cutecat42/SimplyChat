@@ -7,15 +7,18 @@ const Logout = () => {
     const { logout } = useAuth()
     const navigate = useNavigate()
 
-    useEffect(async () => {
+    useEffect(() => {
         setError("")
 
-        try {
-            await logout()
-            navigate("/")
-        } catch {
-            setError("Failed to log out")
+        async function fetchData () {
+            try {
+                await logout()
+                navigate("/")
+            } catch {
+                setError("Failed to log out")
+            }
         }
+        fetchData();
     }, [])
 
     return "Logging out..."
