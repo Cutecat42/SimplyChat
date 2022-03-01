@@ -5,6 +5,7 @@ import Signup from './Signup';
 import Logout from './Logout';
 import NavBar from './NavBar';
 import Profile from './Profile';
+import OtherUser from './OtherUser';
 import ForgotPassword from './ForgotPassword';
 import UpdateProfile from './UpdateProfile';
 import React from 'react';
@@ -17,10 +18,7 @@ function App () {
   return (
     <div className='App'>
 
-      <NavBar currentUser={currentUser} style={{
-        position: "sticky",
-        top: 0
-      }} />
+      <NavBar currentUser={currentUser} style={{}} />
       <Routes>
         <Route exact path='/Login' element={<Login />
         }>
@@ -44,6 +42,9 @@ function App () {
         </Route>
         <Route exact path='/' element={
           !currentUser ? <Navigate to="/Login" /> : <Home />
+        }>
+        </Route>
+        <Route exact path='/Other-user' element={<OtherUser />
         }>
         </Route>
       </Routes>

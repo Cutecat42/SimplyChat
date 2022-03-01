@@ -2,16 +2,14 @@ import React, { useState, useEffect, useRef } from 'react'
 import { db } from '../firebase'
 import { useAuth } from "../contexts/AuthContext"
 import SendMessage from './SendMessage';
+import OtherUser from './OtherUser';
+import { Link, useNavigate } from "react-router-dom"
 import '../App.css';
 
 function Home () {
     const [messages, setMessages] = useState([]);
     const { currentUser } = useAuth()
     const scroll = useRef()
-
-    console.log(scroll.current, "hi")
-    window.history.scrollRestoration = 'manual'
-
 
     const scrollToBottom = () => {
         setTimeout(() => {
@@ -31,9 +29,12 @@ function Home () {
         <>
             {scrollToBottom()}
             <div className="msgs">
-                {messages.map(({ id, text, photoURL, uid }) => (
+                {messages.map(({ id, text, photoURL, uid, user }) => (
                     <div>
                         <div key={id} className={`msg ${uid === currentUser.uid ? 'sent' : 'received'}`}>
+                            <Link to="/Other-user" className="break w-100 text-dark mb-2" state={{ user: { user, photoURL } }}>
+                                {user}
+                            </Link>
                             <img src={photoURL} alt="" />
                             <p>{text}</p>
                         </div>

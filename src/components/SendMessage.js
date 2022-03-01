@@ -25,7 +25,8 @@ function SendMessage ({ scroll }) {
             text: msg,
             photoURL: img,
             uid: currentUser.uid,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp()
+            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+            user: currentUser.displayName
         })
         setMsg('')
         scroll.current.scrollIntoView({ behavior: 'smooth' })
