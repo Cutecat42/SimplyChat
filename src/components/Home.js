@@ -1,29 +1,28 @@
-import React, { useState, useEffect, useRef } from 'react'
-import { db } from '../firebase'
-import { useAuth } from "../contexts/AuthContext"
-import SendMessage from './SendMessage';
-import OtherUser from './OtherUser';
-import { Link, useNavigate } from "react-router-dom"
 import '../App.css';
+import { db } from '../firebase';
+import { Link } from "react-router-dom";
+import SendMessage from './SendMessage';
+import { useAuth } from "../contexts/AuthContext";
+import React, { useState, useEffect, useRef } from 'react';
+
 
 function Home () {
     const [messages, setMessages] = useState([]);
-    const { currentUser } = useAuth()
-    const scroll = useRef()
+    const { currentUser } = useAuth();
+    const scroll = useRef();
 
     const scrollToBottom = () => {
         setTimeout(() => {
             scroll.current?.scrollIntoView({ behavior: "auto" })
         }, 100);
-
-    }
+    };
 
     useEffect(() => {
         db.collection('messages').orderBy('createdAt').limit(50).onSnapshot(snapshot => {
             setMessages(snapshot.docs.map(doc => doc.data()))
         })
 
-    }, [])
+    }, []);
 
     return (
         <>
@@ -46,6 +45,6 @@ function Home () {
             </div>
         </>
     )
-}
+};
 
 export default Home;

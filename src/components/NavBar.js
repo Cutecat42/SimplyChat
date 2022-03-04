@@ -1,8 +1,8 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Navbar from 'react-bootstrap/Navbar';
-import { NavLink } from 'react-router-dom';
-import Nav from 'react-bootstrap/Nav';
 import React from 'react';
+import Nav from 'react-bootstrap/Nav';
+import { NavLink } from 'react-router-dom';
+import Navbar from 'react-bootstrap/Navbar';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const NavBar = ({ currentUser }) => {
     if (!currentUser) return (

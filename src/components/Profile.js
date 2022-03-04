@@ -1,16 +1,16 @@
-import React, { useState } from "react"
-import { Card, Button, Alert, Container } from "react-bootstrap"
-import { useAuth } from "../contexts/AuthContext"
-import { Link, useNavigate } from "react-router-dom"
+import React, { useState } from "react";
+import { useAuth } from "../contexts/AuthContext";
+import { Link, useNavigate } from "react-router-dom";
+import { Card, Button, Alert, Container } from "react-bootstrap";
 
 function Profile () {
-    const [error, setError] = useState("")
-    const { currentUser, logout } = useAuth()
-    const navigate = useNavigate()
+    const [error, setError] = useState("");
+    const { currentUser, logout } = useAuth();
+    const navigate = useNavigate();
     let img;
 
     async function handleLogout () {
-        setError("")
+        setError("");
 
         try {
             await logout()
@@ -18,14 +18,14 @@ function Profile () {
         } catch {
             setError("Failed to log out")
         }
-    }
+    };
 
     if (!currentUser.photoURL) {
         img = "https://img.freepik.com/free-vector/realistic-galaxy-background_23-2148991322.jpg?size=626&ext=jpg"
     }
     else {
         img = `${currentUser.photoURL}`
-    }
+    };
 
     return (
         <>
@@ -59,10 +59,9 @@ function Profile () {
                     </div>
                 </div>
 
-
             </Container>
         </>
     )
-}
+};
 
 export default Profile;

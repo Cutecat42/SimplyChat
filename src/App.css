@@ -71,9 +71,7 @@ p {
 
 .msgsSend {
   max-width: 50%;
-  
 }
-
 
 @media (max-width: 775px) {
   p {

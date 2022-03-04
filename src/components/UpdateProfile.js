@@ -1,23 +1,23 @@
-import React, { useRef, useState } from "react"
-import { Form, Button, Card, Alert, Container } from "react-bootstrap"
-import { useAuth } from "../contexts/AuthContext"
-import { Link, useNavigate } from "react-router-dom"
+import React, { useRef, useState } from "react";
+import { useAuth } from "../contexts/AuthContext";
+import { Link, useNavigate } from "react-router-dom";
+import { Form, Button, Card, Alert, Container } from "react-bootstrap";
 
 export default function UpdateProfile () {
-    const emailRef = useRef()
-    const currentPasswordRef = useRef()
-    const newPasswordRef = useRef()
-    const passwordConfirmRef = useRef()
-    const nameRef = useRef()
-    const urlRef = useRef()
-    const { reLogin, login, currentUser, updatePassword, updateEmail, updateName, updateUrl } = useAuth()
-    const [error, setError] = useState("")
-    const [loading, setLoading] = useState(false)
-    const navigate = useNavigate()
+    const emailRef = useRef();
+    const currentPasswordRef = useRef();
+    const newPasswordRef = useRef();
+    const passwordConfirmRef = useRef();
+    const nameRef = useRef();
+    const urlRef = useRef();
+    const { reLogin, login, currentUser, updatePassword, updateEmail, updateName, updateUrl } = useAuth();
+    const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
-        e.preventDefault()
-        setLoading(true)
+        e.preventDefault();
+        setLoading(true);
 
         try {
             setLoading(true)
@@ -27,32 +27,32 @@ export default function UpdateProfile () {
         catch (err) {
             setLoading(false)
             return setError("Please enter your current password")
-        }
+        };
 
         if (newPasswordRef.current.value !== passwordConfirmRef.current.value) {
             setLoading(false)
             return setError("Passwords do not match")
-        }
+        };
 
-        setLoading(false)
+        setLoading(false);
 
-        const promises = []
-        setLoading(true)
-        setError("")
+        const promises = [];
+        setLoading(true);
+        setError("");
 
         if (emailRef.current.value !== currentUser.email) {
             promises.push(updateEmail(emailRef.current.value))
-        }
+        };
         if (nameRef.current.value !== currentUser.displayName) {
             promises.push(updateName(nameRef.current.value))
-        }
+        };
         if (urlRef.current.value) {
             promises.push(updateUrl(urlRef.current.value))
-        }
+        };
         if (newPasswordRef.current.value) {
             promises.push(login(currentUser.email, currentPasswordRef.current.value))
             promises.push(updatePassword(newPasswordRef.current.value))
-        }
+        };
 
         Promise.all(promises)
             .then(() => {
@@ -65,7 +65,7 @@ export default function UpdateProfile () {
             .finally(() => {
                 setLoading(false)
             })
-    }
+    };
 
     return (
         <>
@@ -142,4 +142,4 @@ export default function UpdateProfile () {
             </Container>
         </>
     )
-}
+};

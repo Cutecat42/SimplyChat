@@ -1,4 +1,4 @@
-import { Route, Navigate, Routes } from 'react-router-dom';
+import React from 'react';
 import Home from './Home';
 import Login from './Login';
 import Signup from './Signup';
@@ -8,12 +8,11 @@ import Profile from './Profile';
 import OtherUser from './OtherUser';
 import ForgotPassword from './ForgotPassword';
 import UpdateProfile from './UpdateProfile';
-import React from 'react';
 import { useAuth } from "../contexts/AuthContext"
+import { Route, Navigate, Routes } from 'react-router-dom';
 
 function App () {
-  const { currentUser } = useAuth()
-  console.log(currentUser)
+  const { currentUser } = useAuth();
 
   return (
     <div className='App'>
@@ -51,6 +50,6 @@ function App () {
 
     </div>
   );
-}
+};
 
 export default App;

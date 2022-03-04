@@ -1,21 +1,14 @@
-import React, { useState } from "react"
-import { Card, Button, Alert, Container } from "react-bootstrap"
-import { useAuth } from "../contexts/AuthContext"
-import { Link, useNavigate, useLocation } from "react-router-dom"
+import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
+import { Card, Alert, Container } from "react-bootstrap";
 
-function Profile ({ uid }) {
-    const [error, setError] = useState("")
+function Profile ({ }) {
+    const [error, setError] = useState("");
 
-    const navigate = useNavigate()
-    // let img;
-    const location = useLocation()
-    const user = location.state.user
-
-    console.log(user, "Other")
-
+    const location = useLocation();
+    const user = location.state.user;
 
     let img = user.photoURL;
-
 
     return (
         <>
@@ -39,13 +32,11 @@ function Profile ({ uid }) {
                         </Card.Body>
                     </Card>
 
-
                 </div>
-
 
             </Container>
         </>
     )
-}
+};
 
 export default Profile;

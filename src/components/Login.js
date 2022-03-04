@@ -1,19 +1,19 @@
+import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useRef, useState } from 'react';
-import { Form, Button, Card, Alert, Container } from "react-bootstrap"
-import { Link, useNavigate } from "react-router-dom"
-import { useAuth } from "../contexts/AuthContext"
-import "bootstrap/dist/css/bootstrap.min.css"
+import { useAuth } from "../contexts/AuthContext";
+import { Link, useNavigate } from "react-router-dom";
+import { Form, Button, Card, Alert, Container } from "react-bootstrap";
 
 function Login () {
-    const emailRef = useRef()
-    const passwordRef = useRef()
-    const { login } = useAuth()
-    const [error, setError] = useState("")
-    const [loading, setLoading] = useState(false)
-    const navigate = useNavigate()
+    const emailRef = useRef();
+    const passwordRef = useRef();
+    const { login } = useAuth();
+    const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
 
     async function handleSubmit (e) {
-        e.preventDefault()
+        e.preventDefault();
 
         try {
             setError("")
@@ -24,7 +24,7 @@ function Login () {
             setError("Failed to sign in")
             setLoading(false)
         }
-    }
+    };
 
     return (
         <>
@@ -61,6 +61,6 @@ function Login () {
             </Container>
         </>
     )
-}
+};
 
 export default Login;
